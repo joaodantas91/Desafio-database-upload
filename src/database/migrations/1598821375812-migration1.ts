@@ -83,7 +83,7 @@ export default class migration11598821375812 implements MigrationInterface {
         name: 'TransactionCategory',
         columnNames: ['category_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'category',
+        referencedTableName: 'categories',
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
       }),
@@ -92,7 +92,7 @@ export default class migration11598821375812 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.dropForeignKey('transactions', 'TransactionCategory');
-    await queryRunner.dropTable('category');
+    await queryRunner.dropTable('categories');
     await queryRunner.dropTable('transactions');
   }
 }
